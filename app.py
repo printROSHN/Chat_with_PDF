@@ -1,6 +1,7 @@
 import streamlit as st
 import openai
 import langchain
+import os
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
