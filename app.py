@@ -1,5 +1,7 @@
 import streamlit as st
-from dotenv import load_dotenv, find_dotenv
+import openai
+import langchain
+from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
@@ -84,9 +86,8 @@ def handle_userinput(user_question):
 
 
 def main():
-    ENV_FILE = find_dotenv()
-    if ENV_FILE:
-        load_dotenv(ENV_FILE)
+    load_dotenv()
+    openai.api_key = os.getenv("OPENAI_API_KEY")
     st.set_page_config(page_title="Chat with multiple PDFs",
                        page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
